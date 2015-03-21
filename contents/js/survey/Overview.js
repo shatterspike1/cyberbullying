@@ -1,7 +1,7 @@
 var Overview = React.createClass({ displayName: 'Overview',
 
     getInitialState: function() {
-        return {data: []};
+        return {data: [], store: this.props.store, url: this.props.url, iter: this.props.iter};
     },
     
     componentDidMount: function() {
@@ -30,7 +30,7 @@ var Overview = React.createClass({ displayName: 'Overview',
                     <h2>Page Stuff</h2>
                 </div>
                 <div id = 'survey' className = 'SurveyView'>
-                    <Survey ref = "survey"/>
+                    <Survey ref = "survey" Survey iter={this.state.iter}/>
                 </div>
             </div>
         )

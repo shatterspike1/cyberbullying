@@ -18,3 +18,10 @@ img {
 	border: 1px #aaa solid;
 	padding: 2px;
 }
+
+#survey {
+    height: 220px;
+    position: fixed;
+    margin-top: 25%;
+    background-color: #fff;
+}

@@ -19,8 +19,8 @@ var Overview = React.createClass({ displayName: 'Overview',
                 <div className = 'PageView six columns'>
                 <h2>Over here!</h2>
                 </div>
-                <div className = 'SurveyView row'>
-                <h2>Well well</h2>
+                <div id = 'survey' className = 'SurveyView'>
+                    <Survey ref ='survey'/>
                 </div>
             </div>
         )

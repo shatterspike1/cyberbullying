@@ -1,4 +1,4 @@
-var Instructions = React.createClass({ displayName: 'Instructions',
+var Instructions = react.createClass({ displayName: 'Instructions',
     render: function (){
         var self = this
         

@@ -1,4 +1,4 @@
-var Overview = React.createClass({ displayName: 'Overview',
+var Overview = react.createClass({ displayName: 'Overview',
 
     getInitialState: function() {
         return {data: []};
@@ -6,7 +6,7 @@ var Overview = React.createClass({ displayName: 'Overview',
     
     componentDidMount: function() {
         //add stuff here
-    },
+    }
     
     render: function() {
         var self = this
@@ -14,13 +14,10 @@ var Overview = React.createClass({ displayName: 'Overview',
         return (
             <div className= 'Overview'>
                 <div className = 'InstructionView three columns'>
-                <h2>Oh, hello!</h2>
                 </div>
                 <div className = 'PageView six columns'>
-                <h2>Over here!</h2>
                 </div>
                 <div className = 'SurveyView row'>
-                <h2>Well well</h2>
                 </div>
             </div>
         )

@@ -16,7 +16,6 @@ var Overview = React.createClass({ displayName: 'Overview',
         this.refs.survey.setState({page: post})
     },
     */
-    // <Page ref = "page"/>
     
     render: function() {
         var self = this
@@ -26,7 +25,8 @@ var Overview = React.createClass({ displayName: 'Overview',
                 <div className = 'InstructionView three columns'>
                     <h2>Instructions Stuff</h2>
                 </div>
-                <div className = 'PageView six columns'>
+                <div id= 'page' className = 'PageView six columns'>
+                    <Page ref = "page"/>
                     <h2>Page Stuff</h2>
                 </div>
                 <div id = 'survey' className = 'SurveyView'>

@@ -11,10 +11,12 @@ var Page = React.createClass({ displayName: 'Page',
             return (
                 <div className="pageView" >
                     <h2 className="pageOwnerId">
-                        {page.profile_owner_id}
+                        {"User: " + page.profile_owner_id}
                     </h2>
-                    <h2 className="pageOwnerId">
-                        {page.profile_owner_id}
+                    <h2 className="pageImage">
+                        {"Image: "}
+                        //style="width:640px;height:360px"
+                        <img src=page.image_url>
                     </h2>
                 </div>
             )

@@ -4,19 +4,14 @@ var Survey = React.createClass({ displayName: 'Survey',
     getInitialState: function() {
         return {page: null, selectValue1: "", selectValue2: "", yes1: 0, no1: 0, yes2: 0, no2: 0, store: 'data/survey_responses.json.data', iter: this.props.iter}
     },
-
-    // note that this is a placeholder
-    //  and we may want some different kind of button or behavior,
-    //  and we may want to make the "next" button handle the click instead
-    // <button onClick={this.handleClick}>{'foobar'}</button>
-    /*
-    handleClick: function(event) {
-        console.log('<something> was clicked', this.props.page)
-        this.props.onSomethingClicked(this.props.page.profile_owner_id)
+    
+    handleNextPage: function(event) {
+        console.log("\nHandling Next Page\n")
+        this.props.nextPage()
     },
-    */
     
     handleChange1: function(e){
+        console.log("Question1 targetValue: ", e.target.value)
         this.setState({selectValue1:e.target.value})
         if (e.target.value == "Yes"){
             this.setState({yes1: 1})
@@ -33,6 +28,7 @@ var Survey = React.createClass({ displayName: 'Survey',
     },
     
     handleChange2: function(e){
+        console.log("Question2 targetValue: ", e.target.value)
         this.setState({selectValue2:e.target.value})
         if (e.target.value == "Yes"){
             this.setState({yes2: 1})
@@ -50,6 +46,7 @@ var Survey = React.createClass({ displayName: 'Survey',
     
     handleSubmit: function(e){
         e.preventDefault()
+        console.log("Submit state: ",this.state)
         var y1 = this.state.yes1
         var n1 = this.state.no1
         var y2 = this.state.yes2
@@ -61,9 +58,10 @@ var Survey = React.createClass({ displayName: 'Survey',
         $.ajax({
             type: "GET",
             url: store,
+            dataType : 'json',
             success: function(data){
                 da = data
-                console.log(da)
+                console.log("(GET) data[", it, "]: ", da[it])
                 da[it].q1yes = da[it].q1yes + y1
                 da[it].q1no = da[it].q1no + n1
                 da[it].q2yes = da[it].q2yes + y2
@@ -71,12 +69,11 @@ var Survey = React.createClass({ displayName: 'Survey',
                 $.ajax({
                     type: "POST",
                     url: store,
-                    data: da,
-                    success: function(){
-                        
-                        console.log(y1 + ' ' + n1 + ' ' + y2 + ' ' + n2)
-                    },
                     dataType: 'json',
+                    data: da[it],
+                    success: function(){
+                        console.log("(POST) data to post is:", da[it])
+                    },
                     error: function(xhr, status, err) {
                         console.error(store, status, err.toString())
                     }
@@ -85,10 +82,12 @@ var Survey = React.createClass({ displayName: 'Survey',
             error: function(xhr, status, err) {
                 console.error(store, status, err.toString())
             }.bind(this)
-        })
+        });
+        
+        console.log("Iteration: ", this.state.iter)
         it++
         this.setState({iter: it})
-        console.log(this.state.iter)
+        console.log("State after submit: ", this.state)
     },
 
     render: function(){
@@ -112,7 +111,7 @@ var Survey = React.createClass({ displayName: 'Survey',
                 </div>
                 <div className="next row">
                     <form className='nextButton' onSubmit={this.handleSubmit}>
-                    <input type='submit' value='Next Example'/>
+                    <input type='submit' value='Next'/>
                     </form>
                 </div>
             </div>

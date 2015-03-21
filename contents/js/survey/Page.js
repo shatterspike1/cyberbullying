@@ -4,6 +4,9 @@ var Page = React.createClass({ displayName: 'Page',
         return {page: null}
     },
     
+    // image tag width/height
+    //style="width:640px;height:360px"
+    
     render: function () {
         
         var page = this.state.page;
@@ -13,11 +16,10 @@ var Page = React.createClass({ displayName: 'Page',
                     <h2 className="pageOwnerId">
                         {"User: " + page.profile_owner_id}
                     </h2>
-                    <h2 className="pageImage">
-                        {"Image: "}
-                        //style="width:640px;height:360px"
-                        <img src=page.image_url>
-                    </h2>
+                    <div className="pageImage">
+                        <h2>{"Image: "}</h2>
+                        <img src={page.image_url}>{page.image.url}</img>
+                    </div>
                 </div>
             )
         } else {

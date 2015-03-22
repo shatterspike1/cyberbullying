@@ -17,14 +17,37 @@ var Page = React.createClass({
             // generate array of comments
             var comments = []
             var i = 1
-            while( page["user_id_"+i] || page["comment_"+i] || page["creation_time_"+i] ) {
+            while(true)
+            {
                 var uid = page["user_id_"+i]
                 var cmt = page["comment_"+i]
                 var crt = page["creation_time_"+i]
-                comments.push({ "uid": uid, "cmt":cmt, "crt":crt })
-                i++
+                
+                if  (
+                        uid && (uid != " ") && 
+                        cmt && (cmt != " ") && 
+                        crt && (crt != " ")
+                    ) 
+                {
+                    comments.push({ "uid": uid, "cmt":cmt, "crt":crt })
+                    i++
+                } 
+                else { break }
             }
             //console.log("Comments: ", comments)
+            
+            var htmlComments = []
+            for(var i = 0; i < comments.length; i++){
+                htmlComments.push(
+                    <div>
+                        <h6>
+                            <b><i>{comments[i].uid + ": "}</i></b>
+                            {comments[i].cmt}
+                            {" <" + comments[i].crt + ">"}
+                        </h6>
+                    </div>
+                )
+            }
             
             return (
                 <div className="pageView">
@@ -60,7 +83,7 @@ var Page = React.createClass({
                             <b>
                                 {"Comments: "}
                             </b>
-                            {comments}
+                            {htmlComments}
                         </h5>
                     </div>
                 </div>

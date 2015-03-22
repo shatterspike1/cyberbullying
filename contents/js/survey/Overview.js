@@ -22,13 +22,14 @@ var Overview = React.createClass({ displayName: 'Overview',
         
         return (
             <div className= 'Overview'>
-                <div className = 'InstructionView three columns'>
-                    <h2>Instructions Stuff</h2>
+                <div className = 'InstructionView five columns'>
+                    <Instructions />
                 </div>
-                <div id= 'page' className = 'PageView six columns'>
+                <div id= 'page' className = 'PageView seven columns'>
                     <Page ref = "page"/>
                     <h2>Page Stuff</h2>
                 </div>
+
                 <div id = 'survey' className = 'SurveyView'>
                     <Survey ref = "survey" Survey iter={this.state.iter}/>
                 </div>

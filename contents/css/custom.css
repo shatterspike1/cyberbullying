@@ -21,7 +21,8 @@ img {
 
 #survey {
     height: 220px;
-    position: fixed;
-    margin-top: 25%;
+    top: 750px;
+    position: absolute;
+    margin-top: 5%;
     background-color: #fff;
 }

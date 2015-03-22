@@ -36,7 +36,7 @@ var Overview = React.createClass({ displayName: 'Overview',
     },
     
     nextPage: function() {
-        this.setState({iter: this.props.iter + 1})
+        this.setState({iter: this.state.iter + 1})
         var postIdx = this.state.iter
         var nextPg = this.state.data[postIdx]
         console.log("page: ", nextPage)
@@ -64,8 +64,8 @@ var Overview = React.createClass({ displayName: 'Overview',
                     <h2>Page Stuff</h2>
                     <Page ref = "pageView" Page page={this.state.data[this.state.iter]}/>
                 </div>
-                <div id = 'survey' className = 'SurveyView'>
-                    <Survey ref = "survey" Survey iter={this.state.iter}/>
+                <div id = "survey" className = "SurveyView">
+                    <Survey ref = "survey" Survey iter={this.state.iter} Survey page={this.state.data[this.state.iter]}/>
                 </div>
             </div>
         )

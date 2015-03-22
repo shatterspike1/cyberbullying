@@ -5,9 +5,53 @@ var Survey = React.createClass({ displayName: 'Survey',
         return {page: null, selectValue1: "", selectValue2: "", yes1: 0, no1: 0, yes2: 0, no2: 0, store: 'data/survey_responses.json.data', iter: this.props.iter}
     },
     
-    handleNextPage: function(event) {
-        console.log("\nHandling Next Page\n")
-        this.props.nextPage()
+    handleNextPage: function(e) {
+        e.preventDefault()
+        console.log("Submit state: ",this.state)
+        var y1 = this.state.yes1
+        var n1 = this.state.no1
+        var y2 = this.state.yes2
+        var n2 = this.state.no2
+        var it = this.state.iter
+        var store = this.state.store
+        var da
+        
+        $.ajax({
+            type: "GET",
+            url: store,
+            dataType : 'json',
+            error: function(xhr, status, err) {
+                console.error(store, status, err.toString())
+            }.bind(this)
+        }).done(function(data){
+                da = data
+                console.log("(GET) data[", it, "]: ", da)
+                da[it].q1yes = da[it].q1yes + y1
+                da[it].q1no = da[it].q1no + n1
+                da[it].q2yes = da[it].q2yes + y2
+                da[it].q2no = da[it].q2no + n2
+                $.ajax({
+                    type: "POST",
+                    url: store,
+                    dataType: 'json',
+                    data: da[it],
+                    error: function(xhr, status, err) {
+                        console.error(store, status, err.toString())
+                    }.bind(this)
+                }).done(
+                    function(){
+                        console.log("(POST) data to post is:", da[it])
+                        console.log("Iteration: ", this.state.iter)
+                        it++
+                        this.setState({iter: it})
+                        console.log("State after submit: ", this.state)
+                        console.log("\nHandling Next Page\n")
+                        this.props.handleNextPage()
+                    }.bind(this)
+                )
+            }.bind(this)
+        );
+        
     },
     
     handleChange1: function(e){
@@ -45,49 +89,6 @@ var Survey = React.createClass({ displayName: 'Survey',
     },
     
     handleSubmit: function(e){
-        e.preventDefault()
-        console.log("Submit state: ",this.state)
-        var y1 = this.state.yes1
-        var n1 = this.state.no1
-        var y2 = this.state.yes2
-        var n2 = this.state.no2
-        var it = this.state.iter
-        var store = this.state.store
-        var da
-        
-        $.ajax({
-            type: "GET",
-            url: store,
-            dataType : 'json',
-            success: function(data){
-                da = data
-                console.log("(GET) data[", it, "]: ", da[it])
-                da[it].q1yes = da[it].q1yes + y1
-                da[it].q1no = da[it].q1no + n1
-                da[it].q2yes = da[it].q2yes + y2
-                da[it].q2no = da[it].q2no + n2
-                $.ajax({
-                    type: "POST",
-                    url: store,
-                    dataType: 'json',
-                    data: da[it],
-                    success: function(){
-                        console.log("(POST) data to post is:", da[it])
-                    },
-                    error: function(xhr, status, err) {
-                        console.error(store, status, err.toString())
-                    }
-                })
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(store, status, err.toString())
-            }.bind(this)
-        });
-        
-        console.log("Iteration: ", this.state.iter)
-        it++
-        this.setState({iter: it})
-        console.log("State after submit: ", this.state)
     },
 
     render: function(){
@@ -110,7 +111,7 @@ var Survey = React.createClass({ displayName: 'Survey',
                         </select>
                 </div>
                 <div className="next row">
-                    <form className='nextButton' onSubmit={this.handleSubmit} onSubmit={this.props.handleNextPage}>
+                    <form className='nextButton' onSubmit={this.handleSubmit} onSubmit={this.handleNextPage}>
                     <input type='submit' value='Next'/>
                     </form>
                 </div>

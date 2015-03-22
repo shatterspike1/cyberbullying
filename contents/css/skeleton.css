@@ -25,7 +25,17 @@
 - Media Queries
 */
 
+/* Instruction Style */
 
+.Instruction.Content{
+    
+    width: 400px;
+    height: 230px;
+    overflow: auto;
+    border: solid;
+    line-height: 100%;
+    font-size: 15px;
+}
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {

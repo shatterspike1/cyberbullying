@@ -1,21 +1,21 @@
 var Overview = React.createClass({ displayName: 'Overview',
 
     getInitialState: function() {
-        console.log('getinitialstate')
+        console.log('getInitialState...')
         var it
             if (!this.props.iter){
                 it = 0
-                console.log('no props')
+                console.log('\t...no props')
             }
             else{
                 it = this.props.iter
-                console.log('props')
+                console.log('\n...props')
             }
         return {data: [], store: this.props.store, url: this.props.url, iter: it};
     },
     
     componentDidMount: function() {
-        console.log('componentDidMount')
+        console.log('\t...componentDidMount')
         $.ajax({
             url: this.props.url,
             dataType: 'json',
@@ -52,7 +52,7 @@ var Overview = React.createClass({ displayName: 'Overview',
         this.setState({iter: hold})
         var postIdx = hold
         var nextPg = this.state.data[postIdx]
-        console.log("page: ", nextPg)
+        console.log("Next Page: ", nextPg)
         this.refs.pageView.setState({page: nextPg})
         this.refs.survey.setState({page: nextPg})
     },
@@ -67,7 +67,8 @@ var Overview = React.createClass({ displayName: 'Overview',
     
     render: function() {
         var self = this
-        console.log(this.state.iter)
+        
+        console.log("Iter: ", this.state.iter)
         
         return (
             <div className= "Overview">
@@ -75,7 +76,7 @@ var Overview = React.createClass({ displayName: 'Overview',
                     <Instructions />
                 </div>
                 <div id = "page" className = "PageView seven columns">
-                    <h2>Page Stuff</h2>
+                    <h3>{"Instagram Post:"}</h3>
                     <Page ref = "pageView" Page page={this.state.data[this.state.iter]} />
                 </div>
                 <div id = "survey" className = "SurveyView">

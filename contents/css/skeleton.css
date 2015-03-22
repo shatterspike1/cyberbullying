@@ -30,12 +30,19 @@
 .Instruction.Content{
     
     width: 400px;
-    height: 230px;
+    height: 700px;
     overflow: auto;
     border: solid;
     line-height: 100%;
-    font-size: 15px;
+    font-size: 18px;
 }
+
+/*.pageImage img{
+    width: 250px;
+    height: 250px;
+}*/
+
+
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {

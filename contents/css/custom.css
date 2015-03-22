@@ -20,9 +20,10 @@ img {
 }
 
 #survey {
-    height: 220px;
-    top: 750px;
+    height: 500px;
+    top: 800px;
     position: absolute;
     margin-top: 5%;
+    margin-left: 0%;
     background-color: #fff;
 }

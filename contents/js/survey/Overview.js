@@ -75,10 +75,12 @@ var Overview = React.createClass({ displayName: 'Overview',
                 <div className = "InstructionView five columns">
                     <Instructions />
                 </div>
+
                 <div id = "page" className = "PageView seven columns">
                     <h3>{"Instagram Post:"}</h3>
                     <Page ref = "pageView" Page page={this.state.data[this.state.iter]} />
                 </div>
+                
                 <div id = "survey" className = "SurveyView five columns">
                     <Survey ref = "survey" Survey iter={this.state.iter} Survey page={this.state.data[this.state.iter]} Survey handleNextPage={this.nextPage} />
                 </div>

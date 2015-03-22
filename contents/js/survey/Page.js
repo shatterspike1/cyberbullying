@@ -1,4 +1,4 @@
-var Page = React.createClass({ displayName: 'Page',
+var Page = React.createClass({
     
     getInitialState: function() {
         return {page: null}
@@ -14,17 +14,21 @@ var Page = React.createClass({ displayName: 'Page',
             this.props.initPage()
         }*/
         
-        var page = this.state.page;
+        console.log("Page props: ", this.props)
+        console.log("Page state: ", this.state)
+        
+        // hard coded for testing
+        var page = (this.state.page) ? this.state.page : this.props.page
         
         if(page) {
             return (
                 <div className="pageView">
-                    <h2 className="pageOwnerId">
+                    <h4 className="pageOwnerId">
                         {"User: " + page.profile_owner_id}
-                    </h2>
+                    </h4>
                     <div className="pageImage">
-                        <h2>{"Image: "}</h2>
-                        <img src={page.image_url}>{page.image.url}</img>
+                        <h4>{"Image: "}</h4>
+                        <img src={page.image_url}></img>
                     </div>
                 </div>
             )

@@ -5,21 +5,6 @@ var Overview = React.createClass({ displayName: 'Overview',
     },
     
     componentDidMount: function() {
-        var hold
-        Papa.parse(this.props.url, {
-            download: true,
-            header: true,
-            complete: function(results){
-                hold = results
-                console.log(results)
-            }
-        })
-        
-        this.setState({
-            data: hold
-        })
-        
-    /*
         $.ajax({
             url: this.props.url,
             dataType: 'json',
@@ -33,7 +18,21 @@ var Overview = React.createClass({ displayName: 'Overview',
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
-    */
+        /*
+        var hold
+        Papa.parse(this.props.url, {
+            download: true,
+            header: true,
+            complete: function(results){
+                hold = results
+                console.log(results)
+            }
+        })
+        
+        this.setState({
+            data: hold
+        })
+        */
     },
     
     nextPage: function() {
@@ -55,7 +54,6 @@ var Overview = React.createClass({ displayName: 'Overview',
     
     render: function() {
         var self = this
-        console.log(this.state.data)
         
         return (
             <div className= "Overview">
@@ -63,10 +61,9 @@ var Overview = React.createClass({ displayName: 'Overview',
                     <Instructions />
                 </div>
                 <div id = "page" className = "PageView seven columns">
-                    <Page ref = "pageView"/>
                     <h2>Page Stuff</h2>
+                    <Page ref = "pageView" Page page={this.state.data[this.state.iter]}/>
                 </div>
-
                 <div id = 'survey' className = 'SurveyView'>
                     <Survey ref = "survey" Survey iter={this.state.iter}/>
                 </div>

@@ -9,10 +9,16 @@ var Page = React.createClass({ displayName: 'Page',
     
     render: function () {
         
+        /*if(!this.state.page) {
+            console.log("props: ", this.props)
+            this.props.initPage()
+        }*/
+        
         var page = this.state.page;
+        
         if(page) {
             return (
-                <div className="pageView" >
+                <div className="pageView">
                     <h2 className="pageOwnerId">
                         {"User: " + page.profile_owner_id}
                     </h2>

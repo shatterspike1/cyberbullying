@@ -5,28 +5,48 @@ var Overview = React.createClass({ displayName: 'Overview',
     },
     
     componentDidMount: function() {
-        //add stuff here
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            success: function(data) {
+                //console.log("data[0]: ", data[0])
+                this.setState({
+                    data: data
+                });
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
     },
     
-    // placeholder function for handling some click event
-    /*
-    onSomethingClicked: function(profile_id) {
-        var post = _.find(this.state.data, {profile_owner_id: profile_id})
-        this.refs.page.setState({page: post})
-        this.refs.survey.setState({page: post})
+    nextPage: function() {
+        this.setState({iter: this.props.iter + 1})
+        var postIdx = this.state.iter
+        var nextPg = this.state.data[postIdx]
+        console.log("page: ", nextPage)
+        this.refs.pageView.setState({page: nextPg})
+        this.refs.survey.setState({page: nextPg})
     },
-    */
+    
+    initPage: function() {
+        var postIdx = this.state.iter
+        var pg = this.state.data[postIdx]
+        console.log("page: ", pg)
+        this.refs.pageView.setState({page: pg})
+        this.refs.survey.setState({page: pg, isStart: false, iter:0})
+    },
     
     render: function() {
         var self = this
         
         return (
-            <div className= 'Overview'>
-                <div className = 'InstructionView five columns'>
+            <div className= "Overview">
+                <div className = "InstructionView five columns">
                     <Instructions />
                 </div>
-                <div id= 'page' className = 'PageView seven columns'>
-                    <Page ref = "page"/>
+                <div id = "page" className = "PageView seven columns">
+                    <Page ref = "pageView"/>
                     <h2>Page Stuff</h2>
                 </div>
 

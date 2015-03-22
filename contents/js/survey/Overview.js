@@ -47,7 +47,6 @@ var Overview = React.createClass({ displayName: 'Overview',
     },
     
     nextPage: function(e) {
-        e.preventDefault()
         var hold = this.state.iter + 1
         this.setState({iter: hold})
         var postIdx = hold

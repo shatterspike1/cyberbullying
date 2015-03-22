@@ -1,1 +1,1 @@
-web: wintersmith preview --chdir public --port $PORT
+web: wintersmith preview --chdir /cyberbullying/ --port $PORT

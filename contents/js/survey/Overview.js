@@ -5,6 +5,21 @@ var Overview = React.createClass({ displayName: 'Overview',
     },
     
     componentDidMount: function() {
+        var hold
+        Papa.parse(this.props.url, {
+            download: true,
+            header: true,
+            complete: function(results){
+                hold = results
+                console.log(results)
+            }
+        })
+        
+        this.setState({
+            data: hold
+        })
+        
+    /*
         $.ajax({
             url: this.props.url,
             dataType: 'json',
@@ -18,6 +33,7 @@ var Overview = React.createClass({ displayName: 'Overview',
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
+    */
     },
     
     nextPage: function() {
@@ -39,6 +55,7 @@ var Overview = React.createClass({ displayName: 'Overview',
     
     render: function() {
         var self = this
+        console.log(this.state.data)
         
         return (
             <div className= "Overview">

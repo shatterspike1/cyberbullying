@@ -1,10 +1,21 @@
 var Overview = React.createClass({ displayName: 'Overview',
 
     getInitialState: function() {
-        return {data: [], store: this.props.store, url: this.props.url, iter: this.props.iter};
+        console.log('getinitialstate')
+        var it
+            if (!this.props.iter){
+                it = 0
+                console.log('no props')
+            }
+            else{
+                it = this.props.iter
+                console.log('props')
+            }
+        return {data: [], store: this.props.store, url: this.props.url, iter: it};
     },
     
     componentDidMount: function() {
+        console.log('componentDidMount')
         $.ajax({
             url: this.props.url,
             dataType: 'json',
@@ -35,11 +46,13 @@ var Overview = React.createClass({ displayName: 'Overview',
         */
     },
     
-    nextPage: function() {
-        this.setState({iter: this.state.iter + 1})
-        var postIdx = this.state.iter
+    nextPage: function(e) {
+        e.preventDefault()
+        var hold = this.state.iter + 1
+        this.setState({iter: hold})
+        var postIdx = hold
         var nextPg = this.state.data[postIdx]
-        console.log("page: ", nextPage)
+        console.log("page: ", nextPg)
         this.refs.pageView.setState({page: nextPg})
         this.refs.survey.setState({page: nextPg})
     },
@@ -54,6 +67,7 @@ var Overview = React.createClass({ displayName: 'Overview',
     
     render: function() {
         var self = this
+        console.log(this.state.iter)
         
         return (
             <div className= "Overview">
@@ -62,12 +76,13 @@ var Overview = React.createClass({ displayName: 'Overview',
                 </div>
                 <div id = "page" className = "PageView seven columns">
                     <h2>Page Stuff</h2>
-                    <Page ref = "pageView" Page page={this.state.data[this.state.iter]}/>
+                    <Page ref = "pageView" Page page={this.state.data[this.state.iter]} />
                 </div>
                 <div id = "survey" className = "SurveyView">
-                    <Survey ref = "survey" Survey iter={this.state.iter} Survey page={this.state.data[this.state.iter]}/>
+                    <Survey ref = "survey" Survey iter={this.state.iter} Survey page={this.state.data[this.state.iter]} Survey handleNextPage={this.nextPage} />
                 </div>
             </div>
+            
         )
     }
 

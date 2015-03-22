@@ -110,7 +110,7 @@ var Survey = React.createClass({ displayName: 'Survey',
                         </select>
                 </div>
                 <div className="next row">
-                    <form className='nextButton' onSubmit={this.handleSubmit} onSubmit={this.handleNextPage}>
+                    <form className='nextButton' onSubmit={this.handleSubmit} onSubmit={this.props.handleNextPage}>
                     <input type='submit' value='Next'/>
                     </form>
                 </div>

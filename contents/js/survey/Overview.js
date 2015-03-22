@@ -54,7 +54,6 @@ var Overview = React.createClass({ displayName: 'Overview',
     
     render: function() {
         var self = this
-        console.log("All Data: ", this.state.data)
         
         return (
             <div className= "Overview">
@@ -62,10 +61,9 @@ var Overview = React.createClass({ displayName: 'Overview',
                     <Instructions />
                 </div>
                 <div id = "page" className = "PageView seven columns">
-                    <Page ref = "pageView"/>
                     <h2>Page Stuff</h2>
+                    <Page ref = "pageView" Page page={this.state.data[0]}/>
                 </div>
-
                 <div id = 'survey' className = 'SurveyView'>
                     <Survey ref = "survey" Survey iter={this.state.iter}/>
                 </div>

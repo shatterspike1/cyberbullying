@@ -25,22 +25,68 @@
 - Media Queries
 */
 
+/*heading style*/
+
+.heading{
+  font-family:Montez;
+  font-size:30px;
+}
+
+/*card styles for heading*/
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,600);
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.card {
+  margin: 0 auto 2rem;
+  padding: 2rem;
+  min-width: 10rem;
+  /*max-width: 20rem;*/
+  background-color: white;
+  /*word-wrap: break-word;*/
+  box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #f2f2f2, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #e5e5e5, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
+}
+.card.card-primary, .card.card-dark {
+  color: white;
+}
+.card.card-primary {
+  background-color: tomato;
+  text-shadow: 0 0.0625em 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #f25e43, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #e5593f, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
+}
+.card.card-secondary {
+  background-color: #47e3ff;
+  box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #43d7f2, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #3fcce5, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
+}
+.card.card-dark {
+  background-color: #404040;
+  box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #3c3c3c, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #393939, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
+}
+.card > :last-child {
+  margin-bottom: 0;
+}
+
 /* Instruction Style */
 
 .Instruction.Content{
     
-    width: 400px;
+    width: 380px;
     height: 700px;
     overflow: auto;
     border: solid;
     line-height: 100%;
     font-size: 18px;
+    margin-left: -5%;
 }
 
-/*.pageImage img{
-    width: 250px;
-    height: 250px;
-}*/
+.PageView.seven.columns{
+  position: relative;
+  left: 80px;
+
+}
+
+
 
 
 /* Grid
@@ -138,6 +184,7 @@ are based on 10px sizing. So basically 1.5rem = 15px :) */
 html {
   font-size: 62.5%; }
 body {
+  background-image: url(http://subtlepatterns.com/patterns/ricepaper.png);
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
@@ -182,7 +229,7 @@ a:hover {
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.button,
+/*.button,
 button,
 input[type="submit"],
 input[type="reset"],
@@ -237,7 +284,7 @@ input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #FFF;
   background-color: #1EAEDB;
-  border-color: #1EAEDB; }
+  border-color: #1EAEDB; }*/
 
 
 /* Forms

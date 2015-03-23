@@ -30,7 +30,7 @@ var Survey = React.createClass({ displayName: 'Survey',
                 da[it].q1no = da[it].q1no + n1
                 da[it].q2yes = da[it].q2yes + y2
                 da[it].q2no = da[it].q2no + n2
-                $.ajax({
+                /* $.ajax({
                     type: "POST",
                     url: store,
                     dataType: 'json',
@@ -38,8 +38,8 @@ var Survey = React.createClass({ displayName: 'Survey',
                     error: function(xhr, status, err) {
                         console.error(store, status, err.toString())
                     }.bind(this)
-                }).done(
-                    function(){
+                }).done( 
+                    function(){ */
                         console.log("(POST) data to post is:", da[it])
                         console.log("Iteration: ", this.state.iter)
                         it++
@@ -47,8 +47,8 @@ var Survey = React.createClass({ displayName: 'Survey',
                         console.log("State after submit: ", this.state)
                         console.log("\nHandling Next Page\n")
                         this.props.handleNextPage()
-                    }.bind(this)
-                )
+                    /* }.bind(this)
+                ) */
             }.bind(this)
         );
         

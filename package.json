@@ -2,7 +2,7 @@
   "name": "cyberbullying",
   "version": "0.0.1",
   "engines": {
-    "node": "0.10.25"
+    "node": "0.10.21"
   },
   "dependencies": {
     "wintersmith": "1.0.x",

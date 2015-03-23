@@ -4,9 +4,11 @@ var Instructions = React.createClass({ displayName: 'Instructions',
         
         return (
             <div className = "Instruction Stuff">
-                <h3>
-                    Overview
-                </h3>
+                <h2 className="heading">
+                    OVERVIEW
+                </h2>
+
+                
                 <div className = "Instruction Content">
                     <p>The purpose of this research is to better understand cyberaggression and cyberbullying in online social networks. Please help us by answering the questions for each image and its associated posts on Instagram. Use the definitions below to answer the questions about the different types of content that is posted.</p>
                     <p>Cyberaggression is broadly defined as using digital media to intentionally harm another person. Examples include negative content and words such as profanity, slang and abbreviations that would be used in negative posts such as hate, fight, wtf.</p>

@@ -1,6 +1,9 @@
 {
   "name": "cyberbullying",
   "version": "0.0.1",
+  "engines": {
+    "node": "0.10.25"
+  }
   "dependencies": {
     "wintersmith": "1.0.x",
     "connect": "2.3.x"

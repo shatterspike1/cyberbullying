@@ -1,1 +1,1 @@
-web: wintersmith preview --chdir /cyberbullying/ --port $PORT
+web: node server.js
